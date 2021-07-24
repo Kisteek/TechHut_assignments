@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Html calculator</title>
+</head>
+<body>
+    <input type="text" id ="array" placeholder="Enter the array">
+    <input type="text" id= "answer" placeholder="Answer">
+    <br/>
+    <br/>
+    <button id="mean" onclick="getAnswer('mean')">mean</button>
+    <button id="median" onclick="getAnswer('median')">median</button>
+    <script>
+        
+        function getAnswer(arr){
+
+            let arrNew = document.getElementById("array").value.split(",");
+            
+            if(arr === 'mean'){
+                
+                let sum = 0;
+                for(let i=0;i<arrNew.length;i++){
+                    sum = sum + Number(arrNew[i]);
+                }
+                document.getElementById("answer").value = sum/arrNew.length;             
+            }
+            if(arr === 'median'){
+                let arrSort = arrNew.sort();
+                if(arrSort.length === 0){
+                    alert("Your array is empty");
+                }
+                else if(arrSort.length % 2 === 0){
+                    document.getElementById("answer").value = (Number(arrSort[arrSort.length/2 - 1]) + Number(arrSort[arrSort.length/2]))/2;
+                    
+                }
+                else{
+                    document.getElementById("answer").value = arrSort[(arrSort.length-1)/2];
+                }   
+            }
+        }
+    </script>
+</body>
+        </html>
